@@ -1,0 +1,14 @@
+.error-message {
+    color: #e74c3c;
+    font-size: 13px;
+    margin-top: 5px;
+    display: none;
+}
+
+.input-box.error input {
+    border-color: #e74c3c;
+}
+
+.input-box.error .error-message {
+    display: block;
+}

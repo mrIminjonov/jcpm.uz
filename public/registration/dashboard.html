@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal of Clinical and Preventive Medicine</title>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+    <header style="background-color: #003366; color: white; padding: 20px; display: flex; align-items: center;">
+        <h1 style="margin: 0;">Journal of Clinical and Preventive Medicine</h1>
+    </header>
+    <nav style="background-color: #00509E; padding: 10px;">
+        <a href="../informations/about.html" style="color: white; margin-right: 15px; text-decoration: none;">About</a>
+        <a href="../informations/editorial.html" style="color: white; margin-right: 15px; text-decoration: none;">Editorial Ethics Policy</a>
+        <a href="/index.html" style="color: white; margin-right: 15px; text-decoration: none;">Current</a>
+        <a href="../informations/archives.html" style="color: white; margin-right: 15px; text-decoration: none;">Archives</a>
+        <a href="../informations/announcements.html" style="color: white; margin-right: 15px; text-decoration: none;">Announcements</a>
+        <a href="../informations/author.docx" download style="color: white; margin-right: 15px; text-decoration: none;">Information for Authors</a>
+        <a href="../informations/forthcoming.html" style="color: white; text-decoration: none;">Forthcoming</a>
+    </nav>
+    <div class="journal-header" style="display: flex; align-items: center; padding: 20px;">
+        <div class="journal-cover" style="flex: 1;">
+            <img src="../images/JCPM_4_2024.png" alt="Journal Cover" style="width: 100%; max-width: 200px;">
+        </div>
+        <div class="journal-info" style="flex: 2; padding-left: 20px;">
+            <h1 style="margin: 0;">Journal of Clinical and Preventive Medicine</h1>
+            <p style="margin: 5px 0;"><strong>ISSN:</strong> 2181-3531</p>
+        </div>
+    </div>
+    <div class="full-issue" style="padding: 20px;">
+        <h2>Full Issue</h2>
+        <ul>
+            <li>
+                <button onclick="window.location.href='../issues/JCPM_4_2024.pdf';" class="pdf-button" style="background-color: #00509E; color: white; border: none; padding: 10px 20px; cursor: pointer;">
+                    Volume 2 Issue 4
+                </button>
+            </li>
+        </ul>
+    </div>
+    <div class="content" style="padding: 20px;">
+        <div class="section">
+            <h2>Editorial</h2>
+            <div class="paper" style="margin-bottom: 20px;">
+                <h3 style="color: #00509E; text-decoration: none;" font-family: Arial, sans-serif>Appliances of Generative AI-Powered Language Tools in Academic Writing: A Scoping Review</h3>
+                <p>Lilia Raitskaya, Elena Tikhonova</p>
+                <p>Pages: 5-30</p>
+                <a href="#" style="color: #00509E; text-decoration: none;">PDF</a>
+            </div>
+        </div>
+        <br />
+        <hr>
+        <div class="section">
+            <h2>Research Papers</h2>
+            <div class="paper" style="margin-bottom: 20px;">
+                <h3 style="color: #00509E; text-decoration: none;" font-family: Arial, sans-serif>Hope Speech Detection Using Social Media Discourse (Posi-Vox-2024): A Transfer Learning Approach</h3>
+                <p>Muhammad Ahmad, Sardar Usman, Humaira Farid, Iqra Ameer, Muhammad Muzzamil, Hmaza Ameer, Grigori Sidorov, Ildar Batyrshin</p>
+                <p>Pages: 31-43</p>
+                <a href="#" style="color: #00509E; text-decoration: none;">PDF</a>
+            </div>
+            <div class="paper" style="margin-bottom: 20px;">
+                <h3 style="color: #00509E; text-decoration: none;" font-family: Arial, sans-serif>Synchronic and Diachronic Predictors of Socialness Ratings of Words</h3>
+                <p>Vladimir Bochkarev, Anna Shevlyakova, Andrey Achkeev</p>
+                <p>Pages: 44-55</p>
+                <a href="#" style="color: #00509E; text-decoration: none;">PDF</a>
+            </div>
+        </div>
+        <div class="section">
+            <a href="informations/archives.html" style="color: #00509E; text-decoration: none;">View all issues ></a>
+        </div>
+    </div>
+    <script>
+        // Foydalanuvchi login holatini tekshirish
+        function checkAuthStatus() {
+          const authToken = localStorage.getItem('authToken') || sessionStorage.getItem('authToken');
+          const authLinks = document.querySelector('.auth-links');
+          
+          if (authToken) {
+            // Agar login qilingan bo'lsa
+            fetch('/api/check-auth', {
+              headers: {
+                'Authorization': `Bearer ${authToken}`
+              }
+            })
+            .then(response => response.json())
+            .then(data => {
+              if (data.success) {
+                authLinks.innerHTML = `
+                  <div style="display: flex; align-items: center; gap: 15px;">
+                    <span style="color: white;">${data.user.username}</span>
+                    <button onclick="logout()" style="
+                      background: none;
+                      border: 1px solid white;
+                      color: white;
+                      padding: 5px 10px;
+                      border-radius: 4px;
+                      cursor: pointer;
+                    ">Logout</button>
+                  </div>
+                `;
+              }
+            })
+            .catch(error => {
+              console.error('Auth check error:', error);
+              clearAuthData();
+            });
+          }
+        }
+      
+        // Chiqish funksiyasi
+        function logout() {
+          fetch('/api/logout', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${localStorage.getItem('authToken') || sessionStorage.getItem('authToken')}`
+            }
+          })
+          .then(() => {
+            clearAuthData();
+            window.location.reload();
+          });
+        }
+      
+        // Auth ma'lumotlarini tozalash
+        function clearAuthData() {
+          localStorage.removeItem('authToken');
+          sessionStorage.removeItem('authToken');
+          document.querySelector('.auth-links').innerHTML = `
+            <a href="registration/register.html" style="color: white; text-decoration: none;">Register</a>
+            <a href="registration/login.html" style="color: white; text-decoration: none;">Login</a>
+          `;
+        }
+      
+        // Sahifa yuklanganda tekshirish
+        document.addEventListener('DOMContentLoaded', checkAuthStatus);
+      </script>
+</body>
+</html>

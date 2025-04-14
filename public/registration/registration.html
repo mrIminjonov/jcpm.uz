@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Page</title>
+    <link rel="stylesheet" href="../css/r.css">
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb"><a href="../index.html">Home</a> / Register</div>
+        
+        <h1>Profile</h1>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="givenName">Given Name *</label>
+                <input type="text" id="givenName" name="givenName" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="familyName">Family Name</label>
+                <input type="text" id="familyName" name="familyName">
+            </div>
+            
+            <div class="form-group">
+                <label for="affiliation">Affiliation *</label>
+                <input type="text" id="affiliation" name="affiliation" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="country">Country *</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                    <option value="US">United States</option>
+                    <option value="UK">United Kingdom</option>
+                    <option value="UZ">Uzbekistan</option>
+                    <!-- Add more countries as needed -->
+                </select>
+            </div>
+            
+            <h2>Login</h2>
+            
+            <div class="form-group">
+                <label for="email">Email *</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="username">Username *</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password *</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="repeatPassword">Repeat password *</label>
+                <input type="password" id="repeatPassword" name="repeatPassword" required>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="privacyAgreement" name="privacyAgreement" required>
+                <label for="privacyAgreement">Yes, I agree to have my data collected and stored according to the privacy statement.</label>
+            </div>
+            
+            <div class="checkbox-group">
+                <input type="checkbox" id="newsletter" name="newsletter">
+                <label for="newsletter">Yes, I would like to be notified of new publications and announcements.</label>
+            </div>
+            
+            <button type="submit" class="submit-btn">Register</button>
+        </form>
+    </div>
+
+    <script src="../js/register.js"></script>
+</body>
+</html>

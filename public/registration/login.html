@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/r.css">
+    <title>Login | JCPM</title>
+</head>
+<body>
+    <div class="container">
+        <div class="breadcrumb"><a href="/index.html">Home</a> / Login</div>
+        <div class="title">Login</div>
+        <form id="loginForm">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Email or Username</span>
+                    <input type="text" id="loginIdentifier" placeholder="Enter your email or username" required>
+                </div>
+            </div>
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Password</span>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
+                </div>
+            </div>
+            <div class="remember-forgot">
+                <label>
+                    <input type="checkbox" id="rememberMe"> Remember me
+                </label>
+            </div>
+            <div class="button">
+                <input type="submit" value="Login">
+            </div>
+            <div class="register-link">
+                Don't have an account? <a href="registration.html">Register here</a>
+            </div>
+        </form>
+    </div>
+    <script src="../js/login.js"></script>
+</body>
+</html>
